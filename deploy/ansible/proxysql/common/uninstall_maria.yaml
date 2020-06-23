@@ -1,0 +1,4 @@
+---
+  - name: remove mariadb
+    shell: rpm -e --nodeps `rpm -qa | grep maria`
+    ignore_errors: yes

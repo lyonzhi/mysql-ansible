@@ -1,0 +1,50 @@
+---
+#由本地传输mysql安装包到目标主机、并把安装包解压到/usr/local/目录
+#等价bash
+#scp mysql-xxxx.tar.gz 192.168.xx.xx:/tmp/
+#tar -xvf /tmp/mysq-xxxx.tar.gz -C /usr/local/
+
+#chown -R mysql:mysql /usr/local/mysql-xxxx
+#
+ - name: create package directory
+   file:
+     path: "{{ mysql_packages_dir }}"
+     state: directory
+
+ - name: transfter mysql packages
+   copy:
+     src: "{{ mysql_packages_dir }}"
+     dest: "{{ mysql_packages_dir }}"
+     owner: mysql
+     group: mysql
+
+ - name: install mysql common package
+   yum:
+     name: "{{ mysql_packages_dir }}/{{ mysql_common_package }}"
+     state: present
+
+ - name: install mysql libs package
+   yum:
+     name: "{{ mysql_packages_dir }}/{{ mysql_libs_package }}"
+     state: present
+
+ - name: install mysql libs compact package
+   yum:
+     name: "{{ mysql_packages_dir }}/{{ mysql_libs_compact_package }}"
+     state: present
+
+ - name: install mysql devel package
+   yum:
+     name: "{{ mysql_packages_dir }}/{{ mysql_devel_package }}"
+     state: present
+
+ - name: install mysql client package
+   yum:
+     name: "{{ mysql_packages_dir }}/{{ mysql_client_package }}"
+     state: present
+
+ - name: install mysql server package
+   yum:
+     name: "{{ mysql_packages_dir }}/{{ mysql_server_package }}"
+     state: present
+

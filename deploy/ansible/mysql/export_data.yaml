@@ -1,0 +1,14 @@
+---
+ - hosts: mgr
+   remote_user: root
+   become_user: yes
+   vars_files:
+    - ../../../config.yaml
+    - vars/group_replication.yaml
+   tasks:
+    - name: export data
+      shell: mysqldump -uroot -p{{ mysql_root_password }} -S {{ mysql_data_dir_base }}/mysql.sock -A -B --master-data=2 --single-transaction --hex-blob -R  > {{ mysql_data_dir_base }}/export.sql
+    - name: fetch data
+      fetch:
+        src: "{{ mysql_data_dir_base }}/export.sql"
+        dest: /tmp

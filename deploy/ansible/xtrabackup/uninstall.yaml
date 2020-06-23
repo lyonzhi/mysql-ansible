@@ -1,0 +1,14 @@
+---
+ - hosts: xtrabackup
+   remote_user: root
+   become_user: yes
+   vars_files:
+    - ../../../config.yaml
+   tasks:
+
+    - name: uninstall
+      yum: 
+        name: percona-xtrabackup-24-2.4.20-1.el7.x86_64
+        state: absent
+
+...

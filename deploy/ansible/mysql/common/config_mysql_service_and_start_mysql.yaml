@@ -1,0 +1,16 @@
+  - name: initialize mysql insecure
+    shell: mysqld --initialize-insecure --user=mysql
+ 
+  - name: start mysql(sytemctl)
+    when: ansible_distribution_major_version == "7"
+    systemd:
+     name: mysqld
+     state: started
+     daemon_reload: yes
+
+  - name: config mysql.service start up on boot
+    when: ansible_distribution_major_version == "7"
+    systemd:
+     name: mysqld
+     enabled: yes
+     daemon_reload: yes

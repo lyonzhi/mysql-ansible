@@ -1,0 +1,15 @@
+---
+ - hosts: perconatoolkit
+   remote_user: root
+   become_user: yes
+   vars_files:
+    - ../../../config.yaml
+   tasks:
+
+    - name: install dependency
+      import_tasks: common/install_dependency.yaml
+
+    - name: install percona toolkit
+      import_tasks: common/install_perconatoolkit.yaml
+    
+...

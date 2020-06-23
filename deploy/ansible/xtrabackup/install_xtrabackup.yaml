@@ -1,0 +1,15 @@
+---
+ - hosts: xtrabackup
+   remote_user: root
+   become_user: yes
+   vars_files:
+    - ../../../config.yaml
+   tasks:
+
+    - name: install dependency
+      import_tasks: common/install_dependency.yaml
+
+    - name: install xtrabackup
+      import_tasks: common/install_xtrabackup.yaml
+    
+...

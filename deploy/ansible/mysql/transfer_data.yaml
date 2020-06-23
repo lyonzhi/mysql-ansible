@@ -1,0 +1,31 @@
+---
+ - hosts: mgr
+   remote_user: root
+   become_user: yes
+   vars_files:
+    - ../../../config.yaml
+    - vars/group_replication.yaml
+   tasks:
+    - name: transfer data to new node
+      copy:
+        src: /tmp/{{ src_host }}/{{ mysql_data_dir_base }}/export.sql
+        dest: "{{ mysql_data_dir_base }}/export.sql"
+    
+    - name: reset master 
+      shell: mysql -uroot -p{{ mysql_root_password }} -S {{ mysql_data_dir_base }}/mysql.sock -e "reset master"
+
+    - name: import data
+      shell: mysql -uroot -p{{ mysql_root_password }} -S {{ mysql_data_dir_base }}/mysql.sock < {{ mysql_data_dir_base }}/export.sql
+   
+    - name: transfer sql statement to remote
+      template:
+        src: template/add_group_replication.sql
+        dest: /tmp/add_group_replication.sql
+
+    - name: add new node to mgr cluster
+      shell: mysql -hlocalhost -uroot -p{{ mysql_root_password }} -S {{ mysql_data_dir_base }}/mysql.sock  < /tmp/add_group_replication.sql
+
+    - name: remove add_group_replication.sql
+      file:
+        dest: /tmp/add_group_replication.sql
+        state: absent

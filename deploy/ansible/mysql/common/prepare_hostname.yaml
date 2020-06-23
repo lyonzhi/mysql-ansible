@@ -1,0 +1,15 @@
+   - name: add localhost4
+     local_action: shell echo "127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4" > /tmp/hosts.j2
+     run_once: true
+   - set_fact: ipaddress={{hostvars[inventory_hostname].ansible_default_ipv4.address}}  
+   - set_fact: hostname={{hostvars[inventory_hostname].ansible_hostname}}
+   - name: add host record 
+     local_action: shell echo {{ipaddress}} {{hostname}} >> /tmp/hosts.j2
+   - name: copy hosts.j2 to all 
+     template: src=/tmp/hosts.j2 dest=/tmp/hosts
+   - name: overwrite hosts
+     shell: cp -f /tmp/hosts /etc/hosts
+   - name: remove /tmp/hosts
+     file:
+      dest: /tmp/hosts
+      state: absent

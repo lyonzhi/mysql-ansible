@@ -1,0 +1,1 @@
+stop group_replication;

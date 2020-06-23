@@ -1,0 +1,16 @@
+---
+
+ - name: create package directory
+   file:
+     path: "{{ mydumper_package_dir }}"
+     state: directory
+
+ - name: transfter  packages
+   copy:
+     src: "{{ mydumper_package_dir }}"
+     dest: "{{ mydumper_package_dir }}"
+
+ - name: install mydumper package
+   yum:
+     name: "{{ mydumper_package_dir }}/{{ mydumper_package }}"
+     state: present

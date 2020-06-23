@@ -1,0 +1,20 @@
+  - name: transfter config
+    template:
+      src: ../template/proxysql.cnf
+      dest: /etc/proxysql.cnf
+
+
+  - name: start proxysql(sytemctl)
+    when: ansible_distribution_major_version == "7"
+    systemd:
+     name: proxysql
+     state: started
+     daemon_reload: yes
+
+  - name: config proxysql start up on boot
+    when: ansible_distribution_major_version == "7"
+    systemd:
+     name: proxysql
+     enabled: yes
+     daemon_reload: yes
+

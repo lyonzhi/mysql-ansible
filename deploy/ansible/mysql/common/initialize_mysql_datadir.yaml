@@ -1,0 +1,8 @@
+---
+ - name: create datadir
+   file:
+    path: "{{mysql_data_dir_base}}"
+    state: directory
+    owner: mysql
+    group: mysql
+

@@ -1,0 +1,16 @@
+---
+
+ - name: create package directory
+   file:
+     path: "{{ perconatoolkit_packages_dir }}"
+     state: directory
+
+ - name: transfter  packages
+   copy:
+     src: "{{ perconatoolkit_packages_dir }}"
+     dest: "{{ perconatoolkit_packages_dir }}"
+
+ - name: install xtrabackup package
+   yum:
+     name: "{{ perconatoolkit_packages_dir }}/{{ perconatoolkit_package }}"
+     state: present

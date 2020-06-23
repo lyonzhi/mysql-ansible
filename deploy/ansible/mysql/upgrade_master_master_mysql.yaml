@@ -1,0 +1,47 @@
+---
+ - hosts: repl
+   remote_user: root
+   become_user: root
+   vars_files:
+    - ../../../config.yaml
+    - vars/master_master.yaml
+   tasks:
+
+    - name: backup config file
+      shell: cp /etc/my.cnf /tmp/my.cnf
+
+    - name: stop slave replication
+      shell: mysql -uroot -p{{ mysql_root_password }} -S {{mysql_data_dir_base}}/mysql.sock -e "stop slave"
+    
+    - name: stop mysqld
+      when: ansible_distribution_major_version == "7"
+      systemd:
+        name: mysqld
+        state: stopped
+      ignore_errors: yes
+    
+    - name: uninstall mysql package
+      yum:
+        name: mysql-community*
+        state: absent
+
+    - name: install new packages
+      import_tasks: common/install_mysql.yaml
+
+    - name: recover old config file
+      shell: cp /tmp/my.cnf /etc/my.cnf
+
+    - name: start mysql service
+      when: ansible_distribution_major_version == "7"
+      systemd:
+       name: mysqld
+       state: started
+       daemon_reload: yes
+
+    - name: remove /tmp/my.cnf
+      file:
+        dest: /tmp/my.cnf
+        state: absent
+
+    - name: start replication
+      shell: mysql -uroot -p{{ mysql_root_password }} -S {{mysql_data_dir_base}}/mysql.sock -e "start slave"

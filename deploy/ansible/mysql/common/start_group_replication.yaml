@@ -1,0 +1,13 @@
+  - name: transfer sql statement to remote
+    template:
+     src: ../template/start_group_replication.sql
+     dest: /tmp/start_group_replication.sql
+
+  - name: config mysql group replication
+    shell: mysql -hlocalhost -uroot -p{{ mysql_root_password }} -S {{ mysql_data_dir_base }}/mysql.sock  < /tmp/start_group_replication.sql
+
+  - name: remove temp file /tmp/start_group_replication.sql
+    file:
+     dest: /tmp/start_group_replication.sql
+     state: absent
+

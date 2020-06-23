@@ -1,0 +1,22 @@
+---
+
+ - name: create package directory
+   file:
+     path: "{{ xtrabackup_packages_dir }}"
+     state: directory
+
+ - name: transfter  packages
+   copy:
+     src: "{{ xtrabackup_packages_dir }}"
+     dest: "{{ xtrabackup_packages_dir }}"
+
+ - name: install xtrabackup package
+   yum:
+     name: "{{ xtrabackup_packages_dir }}/{{ xtrabackup_package }}"
+     state: present
+
+ - name: install qpress package
+   yum:
+     name: "{{ xtrabackup_packages_dir }}/{{ xtrabackup_qpress_package }}"
+     state: present
+

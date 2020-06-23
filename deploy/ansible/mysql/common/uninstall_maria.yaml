@@ -1,0 +1,6 @@
+---
+  - name: remove mariadb
+    yum: 
+     name: mariadb*
+     state: absent
+    ignore_errors: yes

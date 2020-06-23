@@ -1,0 +1,20 @@
+---
+ - name: create package directory
+   file:
+     path: "{{ sysbench_packages_dir }}"
+     state: directory
+
+ - name: transfer sysbench to remote
+   copy:
+    src: "{{ sysbench_packages_dir }}"
+    dest: "{{ sysbench_packages_dir }}"
+
+ - name: install pgsql lib
+   yum: 
+     name: "{{ sysbench_packages_dir }}/{{ sysbench_pgsql_lib_package }}"
+     state: present
+
+ - name: install sysbench
+   yum: 
+     name: "{{ sysbench_packages_dir }}/{{ sysbench_package }}"
+     state: present

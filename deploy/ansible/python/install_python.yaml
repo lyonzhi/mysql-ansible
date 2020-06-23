@@ -1,0 +1,44 @@
+---
+ - hosts: sqlstudio
+   remote_user: root
+   become_user: root
+   vars:
+    is_lnmp: 0
+   vars_files:
+    - ../../../config.yaml
+
+   tasks:
+    - name: install dependents
+      import_tasks: common/install_python_dependents.yaml
+
+    - name: install python
+      import_tasks: common/install_python.yaml
+
+    - name: install mysqlclient
+      when: is_lnmp == 1
+      import_tasks: common/install_mysqlclient.yaml
+
+    - name: install django
+      when: is_lnmp == 1
+      import_tasks: common/install_django.yaml
+
+    - name: install uwsgi
+      when: is_lnmp == 1
+      import_tasks: common/install_uwsgi.yaml
+
+    - name: install bs4
+      when: is_lnmp == 1
+      import_tasks: common/install_bs4.yaml
+
+    - name: install requests
+      when: is_lnmp == 1
+      import_tasks: common/install_requests.yaml
+
+    
+
+
+    
+      
+       
+
+      

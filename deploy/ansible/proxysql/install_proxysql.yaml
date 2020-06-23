@@ -1,0 +1,18 @@
+---
+ - hosts: proxysql
+   remote_user: root
+   become_user: yes
+   vars_files:
+    - ../../../config.yaml
+    - ./vars/group_replication.yaml
+    - ./vars/proxy.yaml
+   tasks:
+    - name: remove mariadb
+      import_tasks: common/install_proxysql.yaml
+    
+    - name: start proxysql
+      import_tasks: common/start_proxysql.yaml
+
+    - name: config proxysql
+      import_tasks: common/config_proxysql.yaml
+...

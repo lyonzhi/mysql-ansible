@@ -1,0 +1,8 @@
+mtls_with_mysql_group_replication: 1
+mysql_binlog_format: row
+mysql_mgr_port: 13306
+mysql_mgr_first_primary: '192.168.1.5'
+mysql_mgr_hosts: 
+    - '192.168.1.5'
+    - '192.168.1.6'
+    - '192.168.1.7'

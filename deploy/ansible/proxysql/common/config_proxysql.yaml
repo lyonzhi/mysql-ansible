@@ -1,0 +1,39 @@
+---
+  - name: transfer sql statement to remote
+    template:
+     src: ../template/add_users.sql
+     dest: /tmp/add_users.sql
+
+  - name: transfer monitor sql statement to remote
+    template:
+     src: ../template/add_group_replication_config.sql
+     dest: /tmp/add_group_replication_config.sql
+
+
+  - name: config variables 
+    proxysql_global_variables:
+     login_user: 'admin'
+     login_password: 'admin'
+     variable: 'mysql-max_connections'
+     value: 4096
+
+  - name: config servers
+    proxysql_backend_servers:
+     hostgroup_id: 10
+     login_user: 'admin'
+     login_password: 'admin'
+     hostname: '{{proxy_hosts}}'
+     state: present
+     load_to_runtime: True
+
+  - name: remove temp file
+    file:
+     dest: /tmp/add_users.sql
+     state: absent
+  
+  - name: remove temp file
+    file:
+     dest: /tmp/add_group_replication_config.sql
+     state: absent
+
+

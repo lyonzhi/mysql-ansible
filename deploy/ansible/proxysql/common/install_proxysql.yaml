@@ -1,0 +1,31 @@
+---
+ - name: create package directory
+   file:
+     path: "{{ proxysql_package_dir }}"
+     state: directory
+
+ - name: transfter proxysql packages
+   copy:
+     src: "{{ proxysql_package_dir }}"
+     dest: "{{ proxysql_package_dir }}"
+
+ - name: install trousers package
+   yum:
+     name: "{{ proxysql_package_dir }}/{{ proxysql_trousers_package }}"
+     state: present
+
+ - name: install nettle package
+   yum:
+     name: "{{ proxysql_package_dir }}/{{ proxysql_nettle_package }}"
+     state: present
+
+
+ - name: install gnutls package
+   yum:
+     name: "{{ proxysql_package_dir }}/{{ proxysql_gnutls_package }}"
+     state: present
+
+ - name: install proxysql package
+   yum:
+     name: "{{ proxysql_package_dir }}/{{ proxysql_package }}"
+     state: present

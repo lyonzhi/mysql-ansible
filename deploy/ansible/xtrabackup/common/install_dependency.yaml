@@ -1,0 +1,33 @@
+---
+
+ - name: create package directory
+   file:
+     path: "{{ xtrabackup_packages_dir }}"
+     state: directory
+
+ - name: transfter  packages
+   copy:
+     src: "{{ xtrabackup_packages_dir }}"
+     dest: "{{ xtrabackup_packages_dir }}"
+
+ - name: install dependency package
+   yum:
+     name: 
+     - "{{ xtrabackup_packages_dir }}/{{ xtrabackup_libev_package }}"
+     - "{{ xtrabackup_packages_dir }}/{{ xtrabackup_perl_data_dumper_package }}"
+     - "{{ xtrabackup_packages_dir }}/{{ xtrabackup_perl_compress_bzip_package }}"
+     - "{{ xtrabackup_packages_dir }}/{{ xtrabackup_perl_compress_zlib_package }}"
+     - "{{ xtrabackup_packages_dir }}/{{ xtrabackup_perl_bdb_mysql_package }}"
+     - "{{ xtrabackup_packages_dir }}/{{ xtrabackup_perl_dbi_package }}"
+     - "{{ xtrabackup_packages_dir }}/{{ xtrabackup_perl_digest_package }}"
+     - "{{ xtrabackup_packages_dir }}/{{ xtrabackup_perl_digest_md5_package }}"
+     - "{{ xtrabackup_packages_dir }}/{{ xtrabackup_perl_io_compress_package }}"
+     - "{{ xtrabackup_packages_dir }}/{{ xtrabackup_perl_net_daemon_package }}"
+     - "{{ xtrabackup_packages_dir }}/{{ xtrabackup_perl_plrpc_package }}"
+     state: present
+
+ - name: install qpress package
+   yum:
+     name: "{{ xtrabackup_packages_dir }}/{{ xtrabackup_qpress_package }}"
+     state: present
+

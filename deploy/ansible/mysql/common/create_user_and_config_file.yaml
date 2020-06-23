@@ -1,0 +1,14 @@
+---
+ - name: create mysql user
+   user:
+    name: mysql
+    state: present
+    uid: "{{mysql_user_uid}}"
+
+ - name: config /etc/my.cnf for mysql-5.7.x
+   template:
+    src: ../template/5.7/my.cnf
+    dest: /etc/my.cnf
+    owner: mysql
+    group: mysql
+    backup: yes

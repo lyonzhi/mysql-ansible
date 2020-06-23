@@ -1,0 +1,12 @@
+---
+ - hosts: mydumper
+   remote_user: root
+   become_user: yes
+   vars_files:
+    - ../../../config.yaml
+   tasks:
+
+    - name: install mydumper
+      import_tasks: common/install_mydumper.yaml
+    
+...
