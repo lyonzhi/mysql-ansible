@@ -5,6 +5,16 @@
      path: "{{ perconatoolkit_packages_dir }}"
      state: directory
 
+ - name: create common directory
+   file:
+     path: "{{ common_packages_dir }}"
+     state: directory
+
+ - name: transfter common packages
+   copy:
+     src: "{{ common_packages_dir }}"
+     dest: "{{ common_packages_dir }}"
+
  - name: transfter  packages
    copy:
      src: "{{ perconatoolkit_packages_dir }}"
@@ -13,23 +23,23 @@
  - name: install dependency package
    yum:
      name: 
-     - "{{ perconatoolkit_packages_dir }}/{{pt_perl_compress_bzip}}"
-     - "{{ perconatoolkit_packages_dir }}/{{pt_perl_compress_zlib}}"
-     - "{{ perconatoolkit_packages_dir }}/{{pt_perl_data_dumper}}"
-     - "{{ perconatoolkit_packages_dir }}/{{pt_perl_dbd_mysql}}"
-     - "{{ perconatoolkit_packages_dir }}/{{pt_perl_dbi}}"
-     - "{{ perconatoolkit_packages_dir }}/{{pt_perl_digest}}"
-     - "{{ perconatoolkit_packages_dir }}/{{pt_perl_digest_md5}}"
-     - "{{ perconatoolkit_packages_dir }}/{{pt_perl_io_compress}}"
+     - "{{ common_packages_dir }}/{{pt_perl_compress_bzip}}"
+     - "{{ common_packages_dir }}/{{pt_perl_compress_zlib}}"
+     - "{{ common_packages_dir }}/{{pt_perl_data_dumper}}"
+     - "{{ common_packages_dir }}/{{pt_perl_dbd_mysql}}"
+     - "{{ common_packages_dir }}/{{pt_perl_dbi}}"
+     - "{{ common_packages_dir }}/{{pt_perl_digest}}"
+     - "{{ common_packages_dir }}/{{pt_perl_digest_md5}}"
+     - "{{ common_packages_dir }}/{{pt_perl_io_compress}}"
      - "{{ perconatoolkit_packages_dir }}/{{pt_perl_io_socket}}"
      - "{{ perconatoolkit_packages_dir }}/{{pt_perl_io_socket_ssl}}"
      - "{{ perconatoolkit_packages_dir }}/{{pt_perl_miozilla_ca}}"
-     - "{{ perconatoolkit_packages_dir }}/{{pt_perl_net_daemon}}"
+     - "{{ common_packages_dir }}/{{pt_perl_net_daemon}}"
      - "{{ perconatoolkit_packages_dir }}/{{pt_perl_net_libidn}}"
      - "{{ perconatoolkit_packages_dir }}/{{pt_perl_net_ssleay}}"
-     - "{{ perconatoolkit_packages_dir }}/{{pt_perl_plrpc}}"
+     - "{{ common_packages_dir }}/{{pt_perl_plrpc}}"
      - "{{ perconatoolkit_packages_dir }}/{{pt_perl_termkey}}"
      - "{{ perconatoolkit_packages_dir }}/{{ pt_maria_lib }}"
-     - "{{ perconatoolkit_packages_dir }}/{{ pt_libv_package }}"
+     - "{{ common_packages_dir }}/{{ pt_libv_package }}"
      state: present
 
