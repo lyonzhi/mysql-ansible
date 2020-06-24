@@ -29,3 +29,14 @@
    yum:
      name: "{{ proxysql_package_dir }}/{{ proxysql_package }}"
      state: present
+
+ - name: install configparser
+   pip:
+     name: "{{ proxysql_package_dir }}configparser-5.0.0.tar.gz"
+     executable: pip3.6
+
+
+ - name: install pymysql
+   pip:
+     name: "{{ proxysql_package_dir }}MySQL-python-1.2.5.zip"
+     executable: pip3.6

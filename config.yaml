@@ -58,17 +58,11 @@ mysql_group: mysql
 mysql_user_uid: 3306
 mysql_user_gid: 3306
 #mysql 安装目录
-#mysql_base_dir: /usr/local/mysql/
 mysql_data_dir_base: /usr/local/mysql
 mysql_port: 3306
 mysql_root_password: i528jc4QqxGm0J88
-#mysql_zabbix_password: mtls
 mysql_repl_user: repl
 mysql_repl_password: i528jc4QqxGm0J88
-#mysql_mha_user: mha
-#mysql_mha_password: mtls0352
-#mysql_app_user: appuser
-#mysql_app_password: mtls0352
 mysql_monitor_user: monitor
 mysql_monitor_password: i528jc4QqxGm0J88
 mysql_backup_user: backup
@@ -150,3 +144,6 @@ pt_libv_package: libev-4.15-7.el7.x86_64.rpm
 ### mydumper 相关配置
 mydumper_package_dir: /usr/local/mysql-ansible/deploy/packages/mydumper/
 mydumper_package: mydumper-0.9.5-2.el7.x86_64.rpm
+
+### python 相关配置
+python_packages_dir: /usr/local/mysql-ansible/deploy/packages/python/

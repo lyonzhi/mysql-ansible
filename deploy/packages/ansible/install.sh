@@ -80,8 +80,5 @@ cd /tmp/Jinja2-2.9.6
 python3 setup.py build
 python3 setup.py install 
 
-cd /tmp/
-tar -xvf ansible-2.4.0.0.tar.gz -C /tmp/
-cd /tmp/ansible-2.4.0.0
-python3 setup.py build
-python3 setup.py install 
+cd /tmp
+pip3 install ansible-2.9.9.tar.gz

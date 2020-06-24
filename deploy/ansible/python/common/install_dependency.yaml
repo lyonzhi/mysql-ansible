@@ -1,0 +1,100 @@
+---
+ - name: create package directory
+   file:
+     path: "{{ python_packages_dir }}dependency/"
+     state: directory
+
+ - name: transfter dependency packages
+   copy:
+     src: "{{ python_packages_dir }}dependency/"
+     dest: "{{ python_packages_dir }}dependency/"
+   
+ - name: install dependency
+   yum: 
+     name: 
+     - "{{ python_packages_dir }}dependency/cpp-4.8.5-39.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/e2fsprogs-1.42.9-17.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/e2fsprogs-libs-1.42.9-17.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/gcc-4.8.5-39.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/gcc-c++-4.8.5-39.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/glibc-2.17-307.el7.1.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/glibc-common-2.17-307.el7.1.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/glibc-devel-2.17-307.el7.1.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/glibc-headers-2.17-307.el7.1.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/kernel-headers-3.10.0-1127.10.1.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/keyutils-libs-devel-1.5.8-3.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/krb5-devel-1.15.1-46.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/krb5-libs-1.15.1-46.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libcom_err-1.42.9-17.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libcom_err-devel-1.42.9-17.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libffi-3.0.13-19.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libffi-devel-3.0.13-19.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libgcc-4.8.5-39.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libgcrypt-devel-1.5.3-14.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libgomp-4.8.5-39.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libgpg-error-devel-1.12-3.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libkadm5-1.15.1-46.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libmpc-1.0.1-3.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libselinux-2.5-15.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libselinux-devel-2.5-15.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libselinux-python-2.5-15.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libselinux-utils-2.5-15.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libsepol-2.5-10.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libsepol-devel-2.5-10.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libss-1.42.9-17.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libstdc++-4.8.5-39.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libstdc++-devel-4.8.5-39.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libverto-devel-0.2.5-4.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libxml2-2.9.1-6.el7.4.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libxml2-devel-2.9.1-6.el7.4.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libxml2-python-2.9.1-6.el7.4.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libxslt-devel-1.1.28-5.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libyaml-devel-0.1.4-11.el7_0.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/mpfr-3.1.1-4.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/openssl-1.0.2k-19.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/openssl-devel-1.0.2k-19.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/openssl-libs-1.0.2k-19.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/pcre-devel-8.32-17.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/sqlite-3.7.17-8.el7_7.1.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/sqlite-devel-3.7.17-8.el7_7.1.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/sshpass-1.06-2.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/xz-devel-5.2.2-1.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/zlib-1.2.7-18.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/zlib-devel-1.2.7-18.el7.x86_64.rpm"
+ 
+ - name: transfer package
+   copy:
+    src: "{{ python_packages_dir }}python-3.6.2.tar.xz"
+    dest: /tmp/
+
+ - name: unarchive
+   unarchive:
+    src: /tmp/python-3.6.2.tar.xz
+    dest: /tmp/
+    remote_src: yes
+
+ - name: install python
+   shell: cd /tmp/Python-3.6.2/;./configure --prefix=/usr/local/python-3.6.2/;make -j $(nproc) && make install;
+
+ - name: link python
+   file:
+    src: /usr/local/python-3.6.2
+    dest:  /usr/local/python
+    state: link
+ 
+ - name: link pip3
+   file:
+    src: /usr/local/python-3.6.2/bin/pip3.6
+    dest: /usr/bin/pip3.6
+    state: link
+
+ - name: add python to path
+   shell: echo 'export PATH=/usr/local/python/bin/:$PATH' >> /etc/profile
+
+ - name: add python to env
+   shell: export PATH=/usr/local/python/bin/:$PATH
+
+ - name: remove temp file
+   file: 
+    path: /tmp/Python-3.6.2/
+    state: absent
