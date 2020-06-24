@@ -1,0 +1,15 @@
+---
+ - name: stop selinux
+   selinux:
+     state: disabled
+
+
+ - name: stop firewalld(sytemctl)
+   systemd:
+    name: firewalld
+    state: stopped
+
+ - name: disable firewalld
+   systemd:
+    name: firewalld
+    enabled: no

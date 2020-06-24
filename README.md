@@ -281,9 +281,12 @@ ansible-playbook install_group_replication.yaml
 ansible-playbook uninstall.yaml
 ```
 
-组复制的特点是集群可以随需求进行扩容，本工具也支持组复制的扩容，首先要在hosts文件的mgr标签下添加新添加的节点（192.168.1.8），然后开始执行下面的命令进行扩容：
+组复制的特点是集群可以随需求进行扩容，本工具也支持组复制的扩容，首先要在hosts文件的mgr标签下添加新添加的节点（192.168.1.8），修改vars/group_replication.yaml，添加新的节点IP到mysql_mgr_hosts数组，然后开始执行下面的命令进行扩容：
 
 ```bash
+# 准备域名
+ansible-playbook prepare_hostname.yaml
+
 # 在新的节点上安装mysql
 ansible-playbook install_mysql.yaml -l 192.168.1.8
 

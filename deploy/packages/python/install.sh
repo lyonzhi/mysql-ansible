@@ -1,7 +1,7 @@
 #!/bin/bash
 #注意要用root用户运行这个脚本
 
-base_dir=/usr/local/mysqltools/deploy/packages/python
+base_dir=/usr/local/mysql-ansible/deploy/packages/python
 
 #1、安装python相关的依赖
 rpm -Uvh $base_dir/dependency/*.rpm
