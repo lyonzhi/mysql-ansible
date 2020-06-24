@@ -39,7 +39,7 @@
      - "{{ perconatoolkit_packages_dir }}/{{pt_perl_net_ssleay}}"
      - "{{ common_packages_dir }}/{{pt_perl_plrpc}}"
      - "{{ perconatoolkit_packages_dir }}/{{pt_perl_termkey}}"
-     - "{{ perconatoolkit_packages_dir }}/{{ pt_maria_lib }}"
+     - "{{ common_packages_dir }}/{{ pt_maria_lib }}"
      - "{{ common_packages_dir }}/{{ pt_libv_package }}"
      state: present
 

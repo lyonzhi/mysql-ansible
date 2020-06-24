@@ -9,9 +9,27 @@
      src: "{{ proxysql_package_dir }}"
      dest: "{{ proxysql_package_dir }}"
 
+ - name: create common directory
+   file:
+     path: "{{ common_packages_dir }}"
+     state: directory
+
+ - name: transfter common packages
+   copy:
+     src: "{{ common_packages_dir }}"
+     dest: "{{ common_packages_dir }}"
+
+ - name: install dependency package
+   yum:
+     name:
+     - "{{ common_packages_dir }}/{{ pt_maria_lib }}"
+     - "{{ common_packages_dir }}/{{ xtrabackup_perl_bdb_mysql_package }}"
+     state: present
+
+ 
  - name: install trousers package
    yum:
-     name: "{{ proxysql_package_dir }}/{{ proxysql_trousers_package }}"
+     name: "{{ proxysql_package_dir }}{{ proxysql_trousers_package }}"
      state: present
 
  - name: install nettle package
@@ -30,13 +48,7 @@
      name: "{{ proxysql_package_dir }}/{{ proxysql_package }}"
      state: present
 
- - name: install configparser
-   pip:
-     name: "{{ proxysql_package_dir }}configparser-5.0.0.tar.gz"
-     executable: pip3.6
-
-
- - name: install pymysql
-   pip:
-     name: "{{ proxysql_package_dir }}MySQL-python-1.2.5.zip"
-     executable: pip3.6
+# - name: install pymysql
+#   pip:
+#     name: "{{ proxysql_package_dir }}PyMySQL-0.9.3.tar.gz"
+#     executable: pip3.6

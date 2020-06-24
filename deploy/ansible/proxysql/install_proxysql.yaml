@@ -13,6 +13,6 @@
     - name: start proxysql
       import_tasks: common/start_proxysql.yaml
 
-    - name: config 
-      import_tasks: common/config_proxysql.yaml
+#    - name: config 
+#      import_tasks: common/config_proxysql.yaml
 ...
