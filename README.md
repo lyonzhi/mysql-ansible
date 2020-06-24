@@ -320,7 +320,7 @@ MySQL有很多开源的周边工具，善于利用这些工具能够提升开发
 
 修改/etc/ansible/hosts，添加proxysql标签：
 
-```
+```plain text
 [proxysql]
 192.168.1.2
 ```
@@ -332,3 +332,14 @@ ansible-playbook install_proxysql.yaml
 ```
 
 到这一步就完成安装了，但是要注意的是，此时proxysql还是需要设置的，具体的配置方法参考proxysql的部署文档。
+
+### 3.2 运维工具安装
+
+现在支持的工具有：
+
+* mydumer，标签是mydumper
+* percona toolkits，标签是perconatoolkit
+* sysbench，标签是sysbench
+* xtrabackup，标签是xtrabackup
+
+要部署哪个工具，就需要首先添加相关的标签到hosts文件中。安装过程调度相关目录下的playbook即可完成。

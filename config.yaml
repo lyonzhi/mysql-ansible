@@ -6,7 +6,7 @@ mtls_base_dir: /usr/local/mysql-ansible/
 mtls_packages: deploy/packages/
 #           #mysqltool自带的python脚本、下发到被控主机时所保存的路径
 mtls_client_base_dir: /usr/local/
-common_packages_dir: /usr/local/mysql-ansible/deploy/packages/common
+common_packages_dir: /usr/local/mysql-ansible/deploy/packages/common/
 
 
 #  section 2  #mysql-ansible自带的各类软件安装文件 的全名、设置这些变量的作用是方便版本共存、mysql不在这里设置是因为
@@ -95,7 +95,7 @@ use_write_set: 1
 #zabbix_server_ip: 172.16.192.100 
 
 #### proxysql 相关配置
-proxysql_package_dir: /usr/local/mysql-ansible/deploy/packages/proxysql
+proxysql_package_dir: /usr/local/mysql-ansible/deploy/packages/proxysql/
 proxysql_package: proxysql-2.0.12-1-centos7.x86_64.rpm
 proxysql_gnutls_package: gnutls-3.3.29-9.el7_6.x86_64.rpm
 proxysql_nettle_package: nettle-2.7.1-8.el7.x86_64.rpm
