@@ -10,7 +10,7 @@
 
     - name: stop selinux & firewall
       import_tasks: common/stop_selinux.yaml
-
+      
     - name: create user and config file
       import_tasks: common/create_user_and_config_file.yaml
 

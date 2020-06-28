@@ -272,6 +272,9 @@ mysql_mgr_hosts:
 执行命令即可开始部署：
 
 ```bash
+# 建议首先给MGR的所有节点添加hosts信息
+ansible-playbook prepare_hostname.yaml
+
 ansible-playbook install_group_replication.yaml
 ```
 

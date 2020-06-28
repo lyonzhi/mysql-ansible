@@ -1,16 +1,5 @@
 ---
-  - name: transfer sql statement to remote
-    template:
-     src: ../template/add_users.sql
-     dest: /tmp/add_users.sql
-
-  - name: transfer monitor sql statement to remote
-    template:
-     src: ../template/add_group_replication_config.sql
-     dest: /tmp/add_group_replication_config.sql
-
-
-  - name: config variables 
+  - name: config variables
     proxysql_global_variables:
      login_user: 'admin'
      login_password: 'admin'
@@ -22,18 +11,34 @@
      hostgroup_id: 10
      login_user: 'admin'
      login_password: 'admin'
-     hostname: '{{proxy_hosts}}'
+     hostname: '{{ item.node }}'
      state: present
      load_to_runtime: True
+    with_items:
+    - { name: 'node1', node: '192.168.1.10'}
+    - { name: 'node2', node: '192.168.1.11'}
+    - { name: 'node3', node: '192.168.1.12'}
 
-  - name: remove temp file
-    file:
-     dest: /tmp/add_users.sql
-     state: absent
-  
-  - name: remove temp file
-    file:
-     dest: /tmp/add_group_replication_config.sql
-     state: absent
+  - name: config variables
+    proxysql_global_variables:
+     login_user: 'admin'
+     login_password: 'admin'
+     variable: 'mysql-monitor_username'
+     value: monitor
 
+  - name: config variables
+    proxysql_global_variables:
+     login_user: 'admin'
+     login_password: 'admin'
+     variable: 'mysql-monitor_password'
+     value: '{{ mysql_monitor_password }}'
+     load_to_runtime: True
 
+  # - name: config replication
+  #   proxysql_replication_hostgroups:
+  #     login_user: 'admin'
+  #     login_password: 'admin'
+  #     writer_hostgroup: 10
+  #     reader_hostgroup: 30
+  #     state: present
+  #     load_to_runtime: True

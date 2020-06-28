@@ -23,7 +23,13 @@
    yum:
      name:
      - "{{ common_packages_dir }}/{{ pt_maria_lib }}"
-     - "{{ common_packages_dir }}/{{ xtrabackup_perl_bdb_mysql_package }}"
+     - "{{ common_packages_dir }}/{{ xtrabackup_perl_dbi_package }}"
+     - "{{ common_packages_dir }}/{{ xtrabackup_perl_compress_zlib_package }}"
+     - "{{ common_packages_dir }}/{{ xtrabackup_perl_compress_bzip_package }}"
+     - "{{ common_packages_dir }}/{{ xtrabackup_perl_io_compress_package }}"
+     - "{{ common_packages_dir }}/{{ xtrabackup_perl_plrpc_package }}"
+     - "{{ common_packages_dir }}/{{ xtrabackup_perl_net_daemon_package }}"
+     - "{{ common_packages_dir }}/{{ xtrabackup_perl_data_dumper_package }}"
      state: present
 
  

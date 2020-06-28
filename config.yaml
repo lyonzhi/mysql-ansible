@@ -137,7 +137,7 @@ pt_perl_net_libidn: perl-Net-LibIDN-0.12-15.el7.x86_64.rpm
 pt_perl_net_ssleay: perl-Net-SSLeay-1.55-6.el7.x86_64.rpm
 pt_perl_plrpc: perl-PlRPC-0.2020-14.el7.noarch.rpm
 pt_perl_termkey: perl-TermReadKey-2.30-20.el7.x86_64.rpm
-pt_maria_lib: mysql-community-libs-5.7.29-1.el7.x86_64.rpm
+pt_maria_lib: mariadb-libs-5.5.65-1.el7.x86_64.rpm
 pt_libv_package: libev-4.15-7.el7.x86_64.rpm
 
 
