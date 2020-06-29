@@ -1,6 +1,6 @@
 
 set sql_log_bin=0;
-create user {{mysql_repl_user}}@'%' identified by '{{mysql_repl_password}}';
+create user {{mysql_repl_user}}@'%' identified with mysql_native_password by '{{mysql_repl_password}}';
 grant replication slave,replication client on *.* to {{mysql_repl_user}}@'%';
 set sql_log_bin=1;
 

@@ -1,5 +1,5 @@
 {% if master_ip in ansible_all_ipv4_addresses %}
-    create user {{mysql_repl_user}}@'%' identified by '{{mysql_repl_password}}';
+    create user {{mysql_repl_user}}@'%' identified with mysql_native_password by '{{mysql_repl_password}}';
     grant replication slave,replication client on *.* to {{mysql_repl_user}}@'%';
 
     flush privileges;

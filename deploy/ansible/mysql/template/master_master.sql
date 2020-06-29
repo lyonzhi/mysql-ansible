@@ -1,6 +1,6 @@
 {% if master_ip in ansible_all_ipv4_addresses %}
 SET SQL_LOG_BIN=0;
-    create user {{mysql_repl_user}}@'%' identified by '{{mysql_repl_password}}';
+    create user {{mysql_repl_user}}@'%' identified with mysql_native_password by '{{mysql_repl_password}}';
     grant replication slave,replication client on *.* to {{mysql_repl_user}}@'%';
 
     flush privileges;
@@ -14,7 +14,7 @@ start slave;
 SET SQL_LOG_BIN=1;
 {% else %}
 SET SQL_LOG_BIN=0;
-create user {{mysql_repl_user}}@'%' identified by '{{mysql_repl_password}}';
+create user {{mysql_repl_user}}@'%' identified with mysql_native_password by '{{mysql_repl_password}}';
     grant replication slave,replication client on *.* to {{mysql_repl_user}}@'%';
 
     flush privileges;
