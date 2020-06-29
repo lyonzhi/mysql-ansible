@@ -16,6 +16,10 @@
     - name: create user and config file
       import_tasks: common/create_user_and_config_file.yaml
 
+    - name: install dependencies
+      when: mysql_version == 80
+      import_tasks: common/install_dependencies.yaml
+      
     - name: install mysql to /usr/local/mysql
       import_tasks: common/install_mysql.yaml
     

@@ -321,12 +321,22 @@ MySQL有很多开源的周边工具，善于利用这些工具能够提升开发
 
 ### 3.1 ProxySQL的部署
 
+安装proxysql之前，需要首先安装python3到目标机器上。
+
 修改/etc/ansible/hosts，添加proxysql标签：
 
 ```plain text
 [proxysql]
 192.168.1.2
 ```
+
+在python的目录下，执行下面的命令安装python：
+
+```bash
+ansible-playbook install_python.yaml
+```
+
+这一步执行成功之后，可以在目标机器上用`python --version`检查是否安装了3.6.2版本。
 
 执行安装命令进行安装：
 

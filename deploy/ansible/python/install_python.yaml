@@ -10,5 +10,11 @@
    tasks:
     - name: install dependencies
       import_tasks: common/install_dependency.yaml
-
+      
+    - name: link python3
+      file:
+       src: /usr/local/python/bin/python3.6
+       dest: /usr/bin/python
+       state: link
+       force: True
 ...

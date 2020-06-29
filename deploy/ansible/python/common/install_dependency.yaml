@@ -61,6 +61,20 @@
      - "{{ python_packages_dir }}dependency/xz-devel-5.2.2-1.el7.x86_64.rpm"
      - "{{ python_packages_dir }}dependency/zlib-1.2.7-18.el7.x86_64.rpm"
      - "{{ python_packages_dir }}dependency/zlib-devel-1.2.7-18.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/deltarpm-3.6-3.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/dnf-4.0.9.2-1.el7_6.noarch.rpm"
+     - "{{ python_packages_dir }}dependency/dnf-data-4.0.9.2-1.el7_6.noarch.rpm"
+     - "{{ python_packages_dir }}dependency/libcomps-0.1.8-14.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libdnf-0.22.5-1.el7_6.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libmodulemd-1.6.3-1.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/librepo-1.8.1-7.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libsmartcols-2.23.2-63.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/libsolv-0.6.34-4.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/python2-dnf-4.0.9.2-1.el7_6.noarch.rpm"
+     - "{{ python_packages_dir }}dependency/python2-hawkey-0.22.5-1.el7_6.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/python2-libcomps-0.1.8-14.el7.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/python2-libdnf-0.22.5-1.el7_6.x86_64.rpm"
+     - "{{ python_packages_dir }}dependency/python-enum34-1.0.4-1.el7.noarch.rpm"
  
  - name: transfer package
    copy:
@@ -87,12 +101,6 @@
     src: /usr/local/python-3.6.2/bin/pip3.6
     dest: /usr/bin/pip3.6
     state: link
-
- - name: add python to path
-   shell: echo 'export PATH=/usr/local/python/bin/:$PATH' >> /etc/profile
-
- - name: add python to env
-   shell: export PATH=/usr/local/python/bin/:$PATH
 
  - name: remove temp file
    file: 
