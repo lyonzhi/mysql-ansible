@@ -5,9 +5,19 @@
     state: present
     uid: "{{mysql_user_uid}}"
 
- - name: config /etc/my.cnf for mysql-5.7.x
+ - name: config /etc/my.cnf
+   when: mysql_version == 57
    template:
     src: ../template/5.7/my.cnf
+    dest: /etc/my.cnf
+    owner: mysql
+    group: mysql
+    backup: yes
+
+ - name: config /etc/my.cnf
+   when: mysql_version == 80
+   template:
+    src: ../template/8.0/my.cnf
     dest: /etc/my.cnf
     owner: mysql
     group: mysql

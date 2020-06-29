@@ -1,0 +1,39 @@
+---
+ - name: create package directory
+   file:
+     path: "{{ mysql_packages_dir }}dependencies/"
+     state: directory
+
+ - name: transfter  packages
+   copy:
+     src: "{{ mysql_packages_dir }}dependencies/"
+     dest: "{{ mysql_packages_dir }}dependencies/"
+     owner: mysql
+     group: mysql
+
+ - name: install package
+   yum:
+     name:
+     - "{{ mysql_packages_dir }}dependencies/e2fsprogs-1.42.9-17.el7.x86_64.rpm"
+     - "{{ mysql_packages_dir }}dependencies/e2fsprogs-libs-1.42.9-17.el7.x86_64.rpm"
+     - "{{ mysql_packages_dir }}dependencies/keyutils-libs-devel-1.5.8-3.el7.x86_64.rpm"
+     - "{{ mysql_packages_dir }}dependencies/krb5-devel-1.15.1-46.el7.x86_64.rpm"
+     - "{{ mysql_packages_dir }}dependencies/krb5-libs-1.15.1-46.el7.x86_64.rpm"
+     - "{{ mysql_packages_dir }}dependencies/libcom_err-1.42.9-17.el7.x86_64.rpm"
+     - "{{ mysql_packages_dir }}dependencies/libcom_err-devel-1.42.9-17.el7.x86_64.rpm"
+     - "{{ mysql_packages_dir }}dependencies/libkadm5-1.15.1-46.el7.x86_64.rpm"
+     - "{{ mysql_packages_dir }}dependencies/libselinux-2.5-15.el7.x86_64.rpm"
+     - "{{ mysql_packages_dir }}dependencies/libselinux-devel-2.5-15.el7.x86_64.rpm"
+     - "{{ mysql_packages_dir }}dependencies/libselinux-python-2.5-15.el7.x86_64.rpm"
+     - "{{ mysql_packages_dir }}dependencies/libselinux-utils-2.5-15.el7.x86_64.rpm"
+     - "{{ mysql_packages_dir }}dependencies/libsepol-2.5-10.el7.x86_64.rpm"
+     - "{{ mysql_packages_dir }}dependencies/libsepol-devel-2.5-10.el7.x86_64.rpm"
+     - "{{ mysql_packages_dir }}dependencies/libss-1.42.9-17.el7.x86_64.rpm"
+     - "{{ mysql_packages_dir }}dependencies/libverto-devel-0.2.5-4.el7.x86_64.rpm"
+     - "{{ mysql_packages_dir }}dependencies/openssl-1.0.2k-19.el7.x86_64.rpm"
+     - "{{ mysql_packages_dir }}dependencies/openssl-devel-1.0.2k-19.el7.x86_64.rpm"
+     - "{{ mysql_packages_dir }}dependencies/openssl-libs-1.0.2k-19.el7.x86_64.rpm"
+     - "{{ mysql_packages_dir }}dependencies/pcre-devel-8.32-17.el7.x86_64.rpm"
+     - "{{ mysql_packages_dir }}dependencies/zlib-1.2.7-18.el7.x86_64.rpm"
+     - "{{ mysql_packages_dir }}dependencies/zlib-devel-1.2.7-18.el7.x86_64.rpm"
+     state: present
