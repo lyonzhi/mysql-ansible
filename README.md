@@ -346,15 +346,15 @@ ansible-playbook install_proxysql.yaml
 
 到这一步就完成安装了，但是要注意的是，此时proxysql还是需要设置的，具体的配置方法参考proxysql的部署文档。
 
-配置实际上也是支持的，只是现在还没有完全搞明白如何做，这部分内容作为未来的方向。
+代码中默认支持进行代理的配置，主要是配置了mysql-monitor_username和mysql-monitor_password参数，以及mysql_servers表的配置。所有的配置项都在common/config_proxysql.yaml文件中，可以自由进行定制。但是默认没有配置复制的信息，因为ansible支持的proxysql模块只有proxysql_replication_hostgroups，并不原生支持组复制，因此暂时注释掉了。但是要说明的是，proxysql_replication_hostgroups表其实也是可以代理组复制集群的。
 
 ### 3.2 运维工具安装
 
 现在支持的工具有：
 
-* mydumer，标签是mydumper
-* percona toolkits，标签是perconatoolkit
-* sysbench，标签是sysbench
-* xtrabackup，标签是xtrabackup
+* mydumer，默认标签是mydumper
+* percona toolkits，默认标签是perconatoolkit
+* sysbench，默认标签是sysbench
+* xtrabackup，默认标签是xtrabackup
 
-要部署哪个工具，就需要首先添加相关的标签到hosts文件中。安装过程调度相关目录下的playbook即可完成。
+要部署哪个工具，就需要首先添加相关的标签到hosts文件中。安装过程调度相关目录下的playbook即可完成。代码里写的都是默认标签，实际使用中，这些工具基本上都装在数据库节点上，也可以修改标签，直接装在不同的数据库节点上。
