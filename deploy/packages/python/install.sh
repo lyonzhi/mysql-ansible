@@ -29,6 +29,8 @@ pip3 install $base_dir/dependency/mysql_connector_python-8.0.12-cp36-cp36m-manyl
 
 pip3 install $base_dir/mysqltools-python/mysqltools-python-2.18.12.01.tar.gz
 
+rm -rf /usr/bin/python
+ln -s /usr/local/python/bin/python3.6 /usr/bin/python
 
 if [ -f /tmp/python-3.6.2.tar.xz ];then
    rm -rf /tmp/python-3.6.2.tar.xz

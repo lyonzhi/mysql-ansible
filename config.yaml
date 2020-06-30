@@ -147,3 +147,7 @@ mydumper_package: mydumper-0.9.5-2.el7.x86_64.rpm
 
 ### python 相关配置
 python_packages_dir: /usr/local/mysql-ansible/deploy/packages/python/
+
+### mytop相关配置
+mytop_packages_dir: /usr/local/mysql-ansible/deploy/packages/mytop/
+mytop_package: mytop-1.7-10.b737f60.el7.noarch.rpm

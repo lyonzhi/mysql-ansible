@@ -1,0 +1,38 @@
+---
+ - name: create package directory
+   file:
+     path: "{{ mytop_packages_dir }}"
+     state: directory
+
+ - name: create common directory
+   file:
+     path: "{{ common_packages_dir }}"
+     state: directory
+
+ - name: transfter common packages
+   copy:
+     src: "{{ common_packages_dir }}"
+     dest: "{{ common_packages_dir }}"
+
+ - name: transfer package
+   copy:
+    src: "{{ mytop_packages_dir }}"
+    dest: "{{ mytop_packages_dir }}"
+
+ - name: install dependency package
+   yum:
+     name: 
+     - "{{ common_packages_dir }}/{{pt_perl_compress_bzip}}"
+     - "{{ common_packages_dir }}/{{pt_perl_compress_zlib}}"
+     - "{{ common_packages_dir }}/{{pt_perl_data_dumper}}"
+     - "{{ common_packages_dir }}/{{pt_perl_dbd_mysql}}"
+     - "{{ common_packages_dir }}/{{pt_perl_dbi}}"
+     - "{{ common_packages_dir }}/{{pt_perl_io_compress}}"
+     - "{{ common_packages_dir }}/{{pt_perl_net_daemon}}"
+     - "{{ common_packages_dir }}/{{pt_perl_plrpc}}"
+     state: present
+
+ - name: install mytop
+   yum: 
+     name:
+     - "{{ mytop_packages_dir }}{{ mytop_package }}"

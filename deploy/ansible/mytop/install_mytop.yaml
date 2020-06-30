@@ -1,0 +1,13 @@
+---
+ - hosts: mgr
+   remote_user: root
+   become_user: root
+   vars:
+    is_lnmp: 0
+   vars_files:
+    - ../../../config.yaml
+
+   tasks:
+    - name: install dependencies
+      import_tasks: common/install_dependency.yaml
+...

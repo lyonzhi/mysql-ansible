@@ -358,3 +358,15 @@ ansible-playbook install_proxysql.yaml
 * xtrabackup，默认标签是xtrabackup
 
 要部署哪个工具，就需要首先添加相关的标签到hosts文件中。安装过程调度相关目录下的playbook即可完成。代码里写的都是默认标签，实际使用中，这些工具基本上都装在数据库节点上，也可以修改标签，直接装在不同的数据库节点上。
+
+安装ansible的时候会默认装上cmdb插件，可以利用cmdb插件收集数据库的信息并输出成HTML文件进行展示。
+
+在中控机上执行下述操作：
+
+```bash
+mkdir -p /tmp/out
+# 收集mgr标签下的数据
+ansible -m setup --tree /tmp/out/ mgr
+
+ansible-cmdb /tmp/out/ > overview.html
+```
