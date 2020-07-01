@@ -41,3 +41,7 @@
      name: "{{ xtrabackup_packages_dir }}/{{ xtrabackup_qpress_package }}"
      state: present
 
+ - name: install rsync package
+   yum:
+     name: "{{ xtrabackup_packages_dir }}rsync-3.1.2-10.el7.x86_64.rpm"
+     state: present

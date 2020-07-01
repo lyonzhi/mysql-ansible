@@ -83,11 +83,3 @@ python3 setup.py install
 
 cd /tmp
 pip3 install ansible-2.9.9.tar.gz
-
-pip3 install Mako-1.1.3-py2.py3-none-any.whl
-pip3 install PyYAML-5.3.1.tar.gz
-pip3 install ushlex-0.99.1.tar.gz
-pip3 install jsonxs-0.6.tar.gz
-pip3 install MarkupSafe-1.1.1-cp36-cp36m-manylinux1_x86_64.whl
-
-pip3 install ansible-cmdb-1.30.tar.gz

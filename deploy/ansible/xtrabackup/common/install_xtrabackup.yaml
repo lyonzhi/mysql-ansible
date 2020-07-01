@@ -14,9 +14,3 @@
    yum:
      name: "{{ xtrabackup_packages_dir }}/{{ xtrabackup_package }}"
      state: present
-
- - name: install qpress package
-   yum:
-     name: "{{ xtrabackup_packages_dir }}/{{ xtrabackup_qpress_package }}"
-     state: present
-
