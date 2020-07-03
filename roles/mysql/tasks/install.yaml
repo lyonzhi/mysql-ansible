@@ -1,0 +1,21 @@
+- name: uninstall maria libs
+  yum:
+    name: mariadb*
+    state: absent
+  ignore_errors: yes
+
+- name: install mysql packages
+  yum: 
+    name: 
+      - "/tmp/{{ mysql_common_package }}"
+      - "/tmp/{{ mysql_libs_package }}"
+      - "/tmp/{{ mysql_libs_compact_package }}"
+      - "/tmp/{{ mysql_devel_package }}"
+      - "/tmp/{{ mysql_client_package }}"
+      - "/tmp/{{ mysql_server_package }}"
+    state: present
+
+- name: install PyMySQL
+  pip:
+    name: "/tmp/{{ mysql_pymysql_package }}"
+    executable: pip3.6

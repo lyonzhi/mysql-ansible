@@ -1,0 +1,39 @@
+mysql_version: 80
+mysql_packages_dir: /etc/ansible/roles/mysql/packages/
+mysql_server_package: mysql-community-server-8.0.20-1.el7.x86_64.rpm
+mysql_client_package: mysql-community-client-8.0.20-1.el7.x86_64.rpm
+mysql_common_package: mysql-community-common-8.0.20-1.el7.x86_64.rpm
+mysql_libs_package: mysql-community-libs-8.0.20-1.el7.x86_64.rpm
+mysql_libs_compact_package: mysql-community-libs-compat-8.0.20-1.el7.x86_64.rpm
+mysql_devel_package: mysql-community-devel-8.0.20-1.el7.x86_64.rpm
+mysql_pymysql_package: PyMySQL-0.9.3-py2.py3-none-any.whl
+
+mysql_user: mysql
+mysql_group: mysql
+mysql_user_uid: 3306
+mysql_user_gid: 3306
+
+mysql_data_dir_base: /usr/local/mysql
+mysql_port: 3306
+mysql_root_password: i528jc4QqxGm0J88
+mysql_repl_user: repl
+mysql_repl_password: i528jc4QqxGm0J88
+mysql_monitor_user: monitor
+mysql_monitor_password: i528jc4QqxGm0J88
+mysql_backup_user: backup
+mysql_backup_password: i528jc4QqxGm0J88
+#mysql 配置文件模版
+mysql_binlog_format: row
+mysql_innodb_log_files_in_group: 4
+mysql_innodb_log_file_size: 512M
+mysql_innodb_log_buffer_size: 64M
+mysql_innodb_open_files: 50000
+mysql_max_connections: 3000
+mysql_thread_cache_size: 256
+mysql_sync_binlog: 1
+mysql_binlog_cache_size: 64K
+mysql_innodb_online_alter_log_max_size: 128M
+mysql_performance_schema: 'on'
+use_write_set: 1
+
+with_mysql_group_replication: 0

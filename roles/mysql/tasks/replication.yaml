@@ -1,0 +1,4 @@
+- name: create replication user
+  mysql_user:
+    name: repl_user
+    password: "{{ mysql_repl_password }}"

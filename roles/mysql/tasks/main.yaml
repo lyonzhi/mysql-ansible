@@ -1,0 +1,8 @@
+- include: group.yaml
+- include: user.yaml
+- include: stop_firewalld.yaml
+- include: copy_packages.yaml
+- include: install.yaml
+- include: config.yaml
+- include: start.yaml
+- include: replication.yaml

@@ -1,0 +1,9 @@
+- name: start mysqld
+  systemd:
+    name: mysqld
+    state: started
+
+- name: enable mysqld
+  systemd: 
+    name: mysqld
+    enabled: yes

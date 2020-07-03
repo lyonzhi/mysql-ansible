@@ -1,0 +1,13 @@
+- name: stop firewalld
+  systemd:
+    name: firewalld
+    state: stopped
+
+- name: disable firewalld
+  systemd: 
+    name: firewalld
+    enabled: no
+
+- name: stop selinux
+  selinux:
+    state: disabled

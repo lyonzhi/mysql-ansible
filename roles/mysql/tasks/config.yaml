@@ -1,0 +1,17 @@
+- name: config /etc/my.cnf
+  when: mysql_version == 57
+  template:
+   src: my57.cnf.j2
+   dest: /etc/my.cnf
+   owner: mysql
+   group: mysql
+   backup: yes
+
+- name: config /etc/my.cnf
+  when: mysql_version == 80
+  template:
+   src: my8.cnf.j2
+   dest: /etc/my.cnf
+   owner: mysql
+   group: mysql
+   backup: yes

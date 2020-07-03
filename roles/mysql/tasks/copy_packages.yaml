@@ -1,0 +1,4 @@
+- name: transfer mysql packages
+  copy:
+    src: "{{ mysql_packages_dir }}"
+    dest: /tmp
